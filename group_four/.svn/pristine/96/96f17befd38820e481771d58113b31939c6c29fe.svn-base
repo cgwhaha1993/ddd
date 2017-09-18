@@ -1,0 +1,47 @@
+/* 
+* @Author: 陈文贵
+* @Date:   2017-08-19 09:52:00
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-08-19 15:35:21
+*/
+#gl_main{min-width: 980px;}
+#gl_main .gl_inner{width: 980px;margin:0 auto;}
+#gl_main .gl_title{font-weight:bold;color:#5A5A5A;padding: 26px 0 14px;border-bottom:2px solid #404040;}
+#gl_main .gl_cont{padding: 24px 0 10px;font-size:12px;}
+/*登陆部分*/
+.gl_cont .sign_in_box{padding-left: 30px;width: 420px;}
+.sign_in_box .sig_tip,.register_box .reg_tip{visibility:hidden;height: 24px;line-height: 24px;text-indent:12px;color:#E51F1F;margin-bottom: 6px;background-color: #FEF2F2;width: 344px;border-radius: 3px;}
+.sign_in_box label{text-indent:4px;display:block;line-height: 14px;font-weight:bold;color:#333333;margin-bottom: 2px;}
+.sign_in_box input{border-radius: 4px;width: 342px;height: 34px;line-height: 34px;text-indent: 6px;border:1px solid #CCCCCC;}
+.sign_in_box .sig_username{margin-bottom: 25px;}
+.sign_in_box .sig_password{margin-bottom: 25px;}
+.sign_in_box .sig_code{margin-bottom: 20px;}
+.sign_in_box .sig_code input{vertical-align: middle;width: 90px;}
+.sign_in_box .sig_code .code_text{position:relative;vertical-align: middle;margin: 0 14px;color:#fff;font-size: 20px;font-weight: bold;font-style:italic;text-shadow: -1px -1px 0px #FF4500,1px 1px 0px #FF4500,0 0 4px #FF4500,0 0 8px #FED8D8;letter-spacing: 3px;}
+.code_text .g_line{position:absolute;top:50%;left:5px;width: 95%;height: 2px;background-color: #E51F1F;opacity: .8;transform:rotate(-5deg);}
+.sign_in_box .sig_code .code_btn{vertical-align: middle;color:#0A8CD2;cursor:pointer;}
+.sign_in_box .sig_btn,.register_box .reg_btn{width: 66px;height: 32px;line-height: 32px;text-align: center;color:#fff;background-color: #F98317;background-image: linear-gradient(180deg,#F7941D 0%,#FA7010 100%);cursor:pointer;border-radius: 3px;}
+
+/*注册部分*/
+.gl_cont .register_box{border-left: 1px dotted #999999;padding-left: 70px;padding-bottom: 30px;}
+.register_box .reg_top{position:relative;margin-bottom: 8px;width: 342px;border:1px dashed #FF4500;background-color: #FFFFCC;}
+.register_box .reg_top h3{height: 24px;line-height: 24px;text-indent: 6px;color:#FF4500;}
+.register_box .reg_top p{padding-bottom: 6px;line-height: 12px;text-indent: 10px;color:#228B22;}
+.register_box .reg_top a{position:absolute;right: 4px;bottom:4px;text-decoration: underline;color:#333333;}
+.register_box .reg_top a:hover{color:#FF4500;}
+.register_box label{text-indent:4px;display:block;font-weight: bold;color:#333333;line-height: 12px;}
+.register_box input.g_text{margin: 2px 0;width: 342px;border-radius: 3px;height: 28px;line-height: 28px;border:1px solid #CCCCCC;text-indent: 8px;}
+.register_box .reg_username{margin-bottom: 15px;}
+.register_box .reg_username p{line-height: 12px;color:#999BA6;}
+.register_box .reg_password{margin-bottom: 15px;}
+.register_box .confirm_password{margin-bottom: 15px;}
+.register_box .gpu{margin-bottom: 15px;}
+.register_box .gpu label{margin-bottom: 4px;}
+.register_box .gpu input{margin-right: 8px;position:relative;top:2px;}
+.register_box .gpu p{line-height: 12px;color:#333333;text-indent: 25px;}
+.register_box .agree{margin-bottom: 22px;}
+.register_box .agree input{margin-right: 10px;vertical-align: middle;}
+.register_box .agree .agree_text{vertical-align: middle;display:inline-block;font-weight:normal;color:#333333;line-height: 12px;}
+.register_box .agree a{text-decoration: underline;color:#1155CC;margin-left: 7px;}
+.register_box .agree a:hover{color:#FF4500;}
+.register_box .dis_btn{cursor:not-allowed;opacity:.3;}

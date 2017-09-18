@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>首页商品图片</title>
+        <link rel="stylesheet" type="text/css" href="css/base.css" />
+        <link rel="stylesheet" type="text/css" href="css/header.css" />
+        <link rel="stylesheet" type="text/css" href="css/header_icon_font/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="css/index_imgs.css" />
+        <link rel="stylesheet" type="text/css" href="css/index_img_font/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="css/wei_middel.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="css/last.css" />
+        <link rel="stylesheet" type="text/css" href="css/font_pnqyv8woicjcq5mi/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="css/font_ve8qz2rh47f4j9k9/iconfont.css" />
+        <style type="text/css">
+            ul,li,html,body,div{margin:0;padding:0;}
+            ul{list-style: none;padding:0;margin:0;}
+            .carousel{position:relative;width:770px;height:350px;overflow:hidden;}
+            .carousel ul{position:absolute;top:0;left:0;overflow: hidden;width:3240px;z-index: 99;}
+            .carousel ul li{float:left;}
+            .carousel img{display:block;height:350px;width:770px;}
+            .carousel>span{position:absolute;left:10px;top:50%;margin-top:-30px;width:30px;height:60px;line-height:60px;text-align:center;background-color: rgba(0,0,0,0.2);color:#fff;display:none;}
+            .carousel:hover span{display:inline-block;}
+            .carousel>.next{left:auto;right:10px;color:#0fc;cursor:pointer;z-index: 100;}
+            .carousel>.prev{right:auto;left:10px;color:#0fc;z-index: 100;cursor:pointer;}
+            .carousel .page{position:absolute;left:380px;bottom:28px;transform:translate(-50%,0);z-index: 100;}
+            .carousel .page span{display:inline-block;margin:0 5px;width:20px;height:20px;line-height: 20px;text-align:center;background-color: rgba(255,255,255,0.8);border-radius:50%;cursor:pointer;}
+            .carousel .page span.active{background-color: #0fc;} 
+            </style>
+        <script src="js/common.js"></script>
+        <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded',function(){
+                    var carousel = document.querySelector('.carousel');
+                    var ul = carousel.querySelector('ul');
+                    // 复制第一张到最后
+                    ul.appendChild(ul.children[0].cloneNode(true));
+                    var len = ul.children.length;
+                    // 默认显示第一张图片
+                    var index = 0;
+                    // 每张图片的宽度
+                    var itemWidth = carousel.offsetWidth;
+                    // 设置容器的宽度，让所有图片水平排列
+                    ul.style.width = itemWidth*len + 'px';
+                    // 生成分页
+                    var page = document.createElement('div');
+                    page.className = 'page';
+                    for(var i=0;i<len-1;i++){
+                        var span = document.createElement('span');
+                        span.innerText = i+1;
+                        // 高亮
+                        if(i===index){
+                            span.className = 'active';
+                        }
+                        page.appendChild(span);
+                    }
+                    carousel.appendChild(page);
+                    // 改变ul的top值
+                    var outerTimer = setInterval(autoPlay,3000);
+                    
+
+                    // 鼠标移入移出
+                    carousel.onmouseenter = ()=>{
+                        clearInterval(outerTimer);
+                    }
+                    carousel.onmouseleave = ()=>{
+                        outerTimer = setInterval(autoPlay,3000);
+                    }
+                    carousel.onmousemove = (e)=>{
+                        var target = e.target;
+                        // 分页点击效果
+                        if(target.parentNode.classList.contains('page')){
+                            index = target.innerText-1;
+                            showPic();
+                        }
+                        // console.log(777,target.tagName)
+                        // console.log(target.className,231)
+                        // if(target.parentNode.classList.contains('carousel')||target.parentNode.classList.contains('carousel')){
+                        //     // console.log(444,span.style.display)
+                        //     span.style.display='block';
+                        // }
+                    }
+                    carousel.onclick = (ev)=>{
+                        var target = ev.target;
+                        
+                        // span.onmouseover=function(){
+                            
+                        //     };
+                        // span.onmouseover=function(){
+                        //     span.style.cursor = 'pointer'
+                        // };
+                    // 前后按钮
+                    if(target.classList.contains('prev')){
+                        // console.log(6666)
+                        // //鼠标移上去变小手
+                        // span.style.cursor = 'pointer'
+                        index--;
+                        showPic();
+                    }else if(target.classList.contains('next')){
+                        // span.style.cursor = 'pointer'
+                        index++;
+                        showPic();
+                    }
+                }
+                    // 自动轮播
+                    function autoPlay(){
+                        index++;
+                        showPic();
+                    }
+                    function showPic(){
+                        // 防止index超出范围
+                        if(index>=len){
+                            // 移动到初始位置
+                            ul.style.left = 0;
+                            index = 1;
+                        }else if(index<0){
+                            index = len-1;
+                        }
+                        // 计算目标值
+                        var target = -index * itemWidth;
+                        animate(ul,{left:target});
+                        // // 分页高亮
+                        for(var i=0;i<len-1;i++){
+                            page.children[i].className = '';
+                        }
+                        // 当图片滚动到复制图片时，显示第1分页高亮
+                        if(index==len-1){
+                            page.children[0].className = 'active'
+                        }else{
+                            page.children[index].className = 'active';
+                        }
+                    }
+
+                });
+
+        </script>
+    </head>
+    <body>
+    <!-- 首页头部 -->
+        <div class="g_top">
+           <div class="g_inner">
+               <div class="g_top_t g_clear">
+                   <div class="g_top_t_l g_fl">
+                       Welcome,<a href="html/login.html">Sign in</a>or<a href="html/login.html">Register</a><span class="g_test"></span>,<a href="#">Sign out</a>
+                   </div>
+                   <ul class="g_top_t_r g_fr">
+                       <li class="account">
+                           <a href="#"><span>My Account</span><i class="iconfont icon-sanjiaoxing"></i></a>
+                            <ul class="account_list">
+                               <span class="g_mask"></span>
+                               <li><a href="#">My Wallet</a></li>
+                               <li><a href="#">My Orders</a></li>
+                               <li><a href="#">My Profile</a></li>
+                               <li><a href="#">My Coupons</a></li>
+                               <li><a href="#">Wish List</a></li>
+                               <li><a href="#">My Messages</a></li>
+                            </ul>
+                       </li>
+                       <li class="g_car_items">
+                           <a href="#" class="shop_car"><i class="iconfont icon-gouwuche"></i><span class="g_num"></span>Items<span class="g_price"></span><i class="iconfont icon-sanjiaoxing"></i></a>
+                       </li>
+                       <li>
+                           <a href="#">Order Tracking</a>
+                       </li>
+                       <li class="g_last">
+                           <a href="#"><i class="iconfont icon-wenhao-copy"></i><span class="g_help">Help</span></a>
+                       </li>
+                   </ul>
+               </div>
+               <div class="g_top_m">
+                    <div class="top_fixed_inner g_clear">
+                        <div class="logo g_fl"></div>
+                        <div class="search g_fl">
+                            <i></i><input type="text" class="search_text g_fl" placeholder="Please enter the keywords"/>
+                            <span  class="search_btn g_fl" type="button" style="height:34px;">Search</span>
+                        </div>
+                        <div class="g_phone g_fl">(323) 285-8741</div>
+                    </div>            
+               </div>
+               <div class="g_top_b">
+               </div>
+           </div>
+        </div>
+        <div class="g_nav">
+           <div class="g_inner g_clear">
+               <div class="nav_menu g_fl"><span>ALL CATEGORIES</span><i></i>
+                       <ul class="nav_menu_one">
+                           <li>
+                               <div class="g_title">
+                                   <span class="g_title_left">Bags</span><span class="g_title_right">&gt;</span>
+                                   <span class="g_gap_mask"></span>
+                               </div>
+                               <div class="g_mesg">
+                                   <a href="html/goods_list.html">Luggage</a>
+                                   <a href="html/goods_list.html">Boston</a>
+                                   <a href="html/goods_list.html">Mayfair</a>
+                                   <a href="html/goods_list.html">Birkin</a>
+                                   <a href="html/goods_list.html">Mongogram</a>
+                                   <a href="html/goods_list.html">Armani</a>
+                               </div>
+                               <div class="nav_menu_two">
+                                   <div class="nav_menu_two_left">
+                                       <h4 class="g_title">NFL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                       </div>
+                                       <h4 class="g_title">NBA</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">MLB</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">NHL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                   </div>
+                                   <div class="nav_menu_two_right">
+                                       <h4>New Arrivals</h4>
+                                       <ul>
+                                           <li><a href="html/goods_list.html" class="g_fs">Final Sale</a></li>
+                                           <li><a href="html/goods_list.html">Louis Vuitton</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Gucci Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Prada Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Hermes Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Burberry Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                       </ul>
+                                   </div>
+                               </div>
+                           </li>
+                           <li>
+                               <div class="g_title">
+                                   <span class="g_title_left">Bags</span><span class="g_title_right">&gt;</span>
+                                   <span class="g_gap_mask"></span>
+                               </div>
+                               <div class="g_mesg">
+                                   <a href="html/goods_list.html">Luggage</a>
+                                   <a href="html/goods_list.html">Boston</a>
+                                   <a href="html/goods_list.html">Mayfair</a>
+                                   <a href="html/goods_list.html">Birkin</a>
+                                   <a href="html/goods_list.html">Mongogram</a>
+                                   <a href="html/goods_list.html">Armani</a>
+                               </div>
+                               <div class="nav_menu_two">
+                                   <div class="nav_menu_two_left">
+                                       <h4 class="g_title">NFL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                       </div>
+                                       <h4 class="g_title">NBA</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">MLB</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">NHL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                   </div>
+                                    <div class="nav_menu_two_right">
+                                       <h4>New Arrivals</h4>
+                                       <ul>
+                                           <li><a href="html/goods_list.html" class="g_fs">Final Sale</a></li>
+                                           <li><a href="html/goods_list.html">Louis Vuitton</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Gucci Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Prada Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Hermes Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Burberry Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                       </ul>
+                                   </div>
+                               </div>
+                           </li>
+                           <li>
+                               <div class="g_title">
+                                   <span class="g_title_left">Bags</span><span class="g_title_right">&gt;</span>
+                                   <span class="g_gap_mask"></span>
+                               </div>
+                               <div class="g_mesg">
+                                   <a href="html/goods_list.html">Luggage</a>
+                                   <a href="html/goods_list.html">Boston</a>
+                                   <a href="html/goods_list.html">Mayfair</a>
+                                   <a href="html/goods_list.html">Birkin</a>
+                                   <a href="html/goods_list.html">Mongogram</a>
+                                   <a href="html/goods_list.html">Armani</a>
+                               </div>
+                               <div class="nav_menu_two">
+                                   <div class="nav_menu_two_left">
+                                       <h4 class="g_title">NFL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                       </div>
+                                       <h4 class="g_title">NBA</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">MLB</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">NHL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                   </div>
+                                    <div class="nav_menu_two_right">
+                                       <h4>New Arrivals</h4>
+                                       <ul>
+                                           <li><a href="html/goods_list.html" class="g_fs">Final Sale</a></li>
+                                           <li><a href="html/goods_list.html">Louis Vuitton</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Gucci Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Prada Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Hermes Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Burberry Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                       </ul>
+                                   </div>
+                               </div>
+                           </li>
+                           <li>
+                               <div class="g_title">
+                                   <span class="g_title_left">Bags</span><span class="g_title_right">&gt;</span>
+                                   <span class="g_gap_mask"></span>
+                               </div>
+                               <div class="g_mesg">
+                                   <a href="html/goods_list.html">Luggage</a>
+                                   <a href="html/goods_list.html">Boston</a>
+                                   <a href="html/goods_list.html">Mayfair</a>
+                                   <a href="html/goods_list.html">Birkin</a>
+                                   <a href="html/goods_list.html">Mongogram</a>
+                                   <a href="html/goods_list.html">Armani</a>
+                               </div>
+                               <div class="nav_menu_two">
+                                   <div class="nav_menu_two_left">
+                                       <h4 class="g_title">NFL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                       </div>
+                                       <h4 class="g_title">NBA</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">MLB</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">NHL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                   </div>
+                                    <div class="nav_menu_two_right">
+                                       <h4>New Arrivals</h4>
+                                       <ul>
+                                           <li><a href="html/goods_list.html" class="g_fs">Final Sale</a></li>
+                                           <li><a href="html/goods_list.html">Louis Vuitton</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Gucci Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Prada Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Hermes Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Burberry Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                       </ul>
+                                   </div>
+                               </div>
+                           </li>
+                           <li>
+                               <div class="g_title">
+                                   <span class="g_title_left">Bags</span><span class="g_title_right">&gt;</span>
+                                   <span class="g_gap_mask"></span>
+                               </div>
+                               <div class="g_mesg">
+                                   <a href="html/goods_list.html">Luggage</a>
+                                   <a href="html/goods_list.html">Boston</a>
+                                   <a href="html/goods_list.html">Mayfair</a>
+                                   <a href="html/goods_list.html">Birkin</a>
+                                   <a href="html/goods_list.html">Mongogram</a>
+                                   <a href="html/goods_list.html">Armani</a>
+                               </div>
+                               <div class="nav_menu_two">
+                                   <div class="nav_menu_two_left">
+                                       <h4 class="g_title">NFL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                          
+                                       </div>
+                                       <h4 class="g_title">NBA</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">MLB</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">NHL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                   </div>
+                                    <div class="nav_menu_two_right">
+                                       <h4>New Arrivals</h4>
+                                       <ul>
+                                           <li><a href="html/goods_list.html" class="g_fs">Final Sale</a></li>
+                                           <li><a href="html/goods_list.html">Louis Vuitton</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Gucci Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Prada Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Hermes Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Burberry Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                       </ul>
+                                   </div>
+                               </div>
+                           </li>
+                           <li>
+                               <div class="g_title">
+                                   <span class="g_title_left">Bags</span><span class="g_title_right">&gt;</span>
+                                   <span class="g_gap_mask"></span>
+                               </div>
+                               <div class="g_mesg">
+                                   <a href="html/goods_list.html">Luggage</a>
+                                   <a href="html/goods_list.html">Boston</a>
+                                   <a href="html/goods_list.html">Mayfair</a>
+                                   <a href="html/goods_list.html">Birkin</a>
+                                   <a href="html/goods_list.html">Mongogram</a>
+                                   <a href="html/goods_list.html">Armani</a>
+                               </div>
+                               <div class="nav_menu_two">
+                                   <div class="nav_menu_two_left">
+                                       <h4 class="g_title">NFL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                           <a href="html/goods_list.html">Cleveland Browns</a>
+                                       </div>
+                                       <h4 class="g_title">NBA</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">MLB</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Baltimore</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                       <h4 class="g_title g_test">NHL</h4>
+                                       <div class="g_goods_link">
+                                           <a href="html/goods_list.html">Buffalo</a>
+                                           <a href="html/goods_list.html">Cincinnati Bengals</a>
+                                       </div>
+                                   </div>
+                                    <div class="nav_menu_two_right">
+                                       <h4>New Arrivals</h4>
+                                       <ul>
+                                           <li><a href="html/goods_list.html" class="g_fs">Final Sale</a></li>
+                                           <li><a href="html/goods_list.html">Louis Vuitton</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Gucci Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Prada Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Hermes Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                           <li><a href="html/goods_list.html">Burberry Handbags</a><i class="iconfont icon-yousanjiaoxing-copy"></i></li>
+                                       </ul>
+                                   </div>
+                               </div>
+                           </li>
+                       </ul>
+                   </div>
+               <div class="nav_links g_fl">
+                   <a href="#" class="gn_active">Home</a><span></span>
+                   <a href="#">New Arrivals</a><span></span>
+                   <a href="#">Final Sale</a><span></span>
+                   <a href="#"><i></i>Brands</a><span></span>
+                   <a href="#"><i></i>Albums</a>
+               </div>
+               <div class="nav_r_bg g_fr"></div>
+           </div>
+        </div>
+    <!-- 首页商品 -->
+        <div class="g_main_right">
+            <div class="g_m_r_inner">
+                <div class="carousel">
+                    <ul>
+                        <li><img src="images/z11.png"></li>
+                        <li><img src="images/z12.png"></li>
+                        <li><img src="images/z13.png"></li>
+                        <li><img src="images/z14.png"></li>
+                        <li><img src="images/z15.png"></li>
+                        <li><img src="images/z16.png"></li>
+                    </ul>
+                    <span class="prev">&lt;</span>
+                    <span class="next">&gt;</span>
+                </div> 
+                <img class="g_g" src="images/g_get_details.png" height="38" width="770" alt="" />
+                <div class="g_goods g_clear">
+                   <!--  <a href="#">
+                        <i class="iconfont icon-pinpaishangguanlitubiaokaobei">
+                            <span class="g_mask_img"></span>
+                        </i>
+                        <div class="g_mes">
+                            <h3>Miu Miu</h3>
+                            <p>asdasd</p>
+                            <p>asdsad</p>
+                        </div>
+                    </a> -->
+                </div>
+                <div class="w_indexcontainer">
+                    <div class="W_indexmiddle">
+                       <p>Staff Picks</p> 
+                    </div>
+                    <div>
+                        <ul class="w_indexmiddle1">
+                            <li>
+                                <a href="#">
+                                    <img src="images/w_middle_m1.png" />
+                                    <h4>Louis Vuitton Monogtam
+                                    Speedy 30 M41526</h4>
+                                    <p class="p">USD 229.00</p>
+                                    <p>USD 259.00</p> 
+                                </a> 
+                            </li>
+                            <li>
+                            <a href="#">
+                                <img src="images/w_middle_m2.png"/>
+                                <h4>Gucci New Jackie Medium Shoulder Bag Apricot & Dark Coffee 2184</h4>
+                                <p class="p">USD 229.00</p>
+                                <p>USD 259.00</p> 
+                            </a>  
+                            </li>
+                        </ul> 
+                    </div>
+                </div>
+                <div id="w_spandiv">
+                        <h3>New Arrivals</h3>
+                </div>
+                <div class="w_middlenew">
+                    <ul class="w_middlenewul">
+                        <li>
+                            <a href="#">
+                                <img src="images/l_4.png" />
+                                <p>Louis Vuitton Monogtam
+                                Speedy 30 M41526</p>
+                                <p class="list">List price:<span>USD 219</span></p>
+                                <p class="our">Our price: <span>$ 189</span></p>
+                                <p class="save">Save $30</p>
+                            </a> 
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/l_1.png" />
+                                <p>Decent Module Sillicone Skin Cover for iPhone..</p>
+                                <p class="list">List price:<span>USD 219</span></p>
+                                <p class="our">Our price: <span>$ 189</span></p>
+                                <p class="save">Save $30</p>
+                            </a> 
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/l_2.png" />
+                                <p>Louis Vuitton Monogtam
+                                Speedy 30 M41526</p>
+                                <p class="list">List price:<span>USD 219</span></p>
+                                <p class="our">Our price: <span>$ 189</span></p>
+                                <p class="save">Save $30</p>
+                            </a> 
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/l_3.png" />
+                                <p>Louis Vuitton Monogtam Speedy 30 M41526</p>
+                               <p class="list">List price:<span>USD 219</span></p>
+                                <p class="our">Our price: <span>$ 189</span></p>
+                                <p class="save">Save $30</p>
+                            </a> 
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/l_1.png" />
+                                <p>Decent Module Sillicone Skin Cover for iPhone..</p>
+                                <p class="list">List price:<span>USD 219</span></p>
+                                <p class="our">Our price: <span>$ 189</span></p>
+                                <p class="save">Save $30</p>
+                            </a> 
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/l_2.png" />
+                                <p>Louis Vuitton Monogtam
+                                Speedy 30 M41526</p>
+                                <p class="list">List price:<span>USD 219</span></p>
+                                <p class="our">Our price: <span>$ 189</span></p>
+                                <p class="save">Save $30</p>
+                            </a> 
+                        </li>
+                    </ul>
+                    <span class="w_prev">&lt;</span>
+                    <span class="w_next">&gt;</span>
+                </div> 
+                <div id="h_mm">
+                    <h4>Top Sellers</h4>
+                    <div class="h_main">
+                        
+                    </div>
+                    <h4><img src="images/h_logo4.png" alt="" />Top Designer Replica Handbags News</h4>
+                    <ul>
+                        <li class=".g_clear"><img src="images/l_1.png" alt="" /><a href="#">New YSL concept store into the round side,limited Muse two</a><br><span>In Freud's theory, the ego mediates among the id, the super-ego and the external world. Its task is to find a balance between primitive drives, morals, and reality while satisfying the id and superego. Its main concern is with the individual's safety and allows some of the id's desires to be expressed, but only when consequences of these actions are marginal.Its task is to find a balance between primitive drives. </span></li>
+                        <li class=".g_clear"><img src="images/l_2.png" alt="" /><a href="#">GUCCI handbag crocodile skin New Pelham</a><br><span>In Freud's theory, the ego mediates among the id, the super-ego and the external world. Its task is to find a balance between primitive drives, morals, and reality while satisfying the id and superego. Its main concern is with the individual's safety and allows some of the id's desires to be expressed, but only when consequences of these actions are marginal.Its task is to find a balance between primitive drives. </span></li>
+                        <li class=".g_clear"><img src="images/l_3.png" alt="" /><a href="#">New BVLGARI Diagono Chronograph watch rose gold diamond</a><br><span>In Freud's theory, the ego mediates among the id, the super-ego and the external world. Its task is to find a balance between primitive drives, morals, and reality while satisfying the id and superego. Its main concern is with the individual's safety and allows some of the id's desires to be expressed, but only when consequences of these actions are marginal.Its task is to find a balance between primitive drives. </span></li>
+                        <li class=".g_clear"><img src="images/l_4.png" alt="" /><a href="#">Cartier Rotonde de Cartier Chronograph White Center complex functions K gold watch</a><br><span>In Freud's theory, the ego mediates among the id, the super-ego and the external world. Its task is to find a balance between primitive drives, morals, and reality while satisfying the id and superego. Its main concern is with the individual's safety and allows some of the id's desires to be expressed, but only when consequences of these actions are marginal.Its task is to find a balance between primitive drives. </span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="toTop">
+            <img src="images/toTop.png" alt="" />
+            <div class="iconfont"><span>&#xe940;</span>Top</div>
+            <div></div>
+        </div>    
+        <footer>
+            <div class="container" id="container">
+                <div id="z_dv1"></div>
+                <div id="z_dv2"></div>
+                <div id="z_dv3"></div>
+
+                <div id="z_dv4">
+                    <i class="iconfont" id="z_good1">&#xe638;</i>
+                    <i class="iconfont" id="z_good2">&#xe627;</i>
+                    <i class="iconfont" id="z_good3">&#xe833;</i>
+                    
+                    <i class="iconfont" id="z_good4">&#xe60a;</i>
+                </div>
+                <div id="z_dv5">
+                    <p>Enter your E-mail address and get your FREE E-BOOK!</p>
+                    <input type="text" value="Enter your email address"/>
+                    <button>
+                    <i class="iconfont" id="z_good5">&#xe60a;</i>
+                    <span>Subscribe</span>
+                    </button>
+                </div>
+            </div>                  
+            <div id="z_dv">
+                <img src="images/z1.png"/>
+                <p>⊙ 2008-2013 <span>Outletinbox.com</span> All Rights Reserved.</p>
+            </div>
+        </footer>
+      
+
+        <script src="js/w_middleindex.js"></script>
+        <script type="text/javascript" src="js/index_imgs.js"></script>
+        <script type="text/javascript" src="js/h_index.js"></script>
+        <script type="text/javascript" src="js/footer.js"></script>
+    </body>
+</html>

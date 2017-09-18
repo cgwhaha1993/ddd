@@ -1,0 +1,322 @@
+/* 
+* @Author: 陈文贵
+* @Date:   2017-08-05 14:04:41
+* @Last Modified by:   Marte
+* @Last Modified time: 
+*/
+/*==*/
+    #goods_detail_bottom{
+        min-width: 980px;
+        margin-top: 20px;
+    }
+    #goods_detail_bottom .g_inner{
+        width: 980px;
+        margin: 0 auto;
+    }
+    #goods_detail_bottom .product_left{
+        width: 744px;
+    }
+    .product_left{}
+    .product_left_title{
+        font-size: 16px;
+        font-weight: bold;
+        color:#333333;
+        height: 25px;
+        line-height: 25px;
+        border-bottom: 2px solid #333;
+    }
+    .product_left_main{
+        padding-top: 2px;
+        border-right: 1px solid #E4E4E4;
+        box-shadow: inset -3px 0 5px -2px #E4E4E4;
+    }
+    .g_product_des{}
+    .g_product_des img{
+        display:block;
+    }
+    .g_product_des .g_des_text{
+        padding: 10px;
+        color:#333333;
+        font-size: 14px;
+    }
+    .g_des_text .text{
+        line-height: 20px;
+        padding: 5px 0;
+    }
+    .g_des_text .text_1,.g_des_text .text_2{
+        /*padding: 10px 0;*/
+    }
+/*==*/
+
+/*==*/
+    .star_light{
+        color:#FF8D03;
+        /*background-image: linear-gradient(135deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 100%);*/
+    }
+    .star_dark{
+        color:#848484;
+    }
+    .star_clicked{
+        color:#DA7001;
+    }
+    .product_left .g_product_rev{
+        padding: 16px 3px 4px 0;
+    }
+    .g_product_rev .reviews_title{
+        font-size: 16px;
+        font-weight: bold;
+        color:#333333;
+        height: 25px;
+        line-height: 25px;
+        border-bottom: 2px solid #333;
+        margin-bottom: 2px;
+    }
+/*--*/
+    .g_product_rev .reviews_total{
+        padding: 16px 10px 8px;
+        background-color: #EFEFEF;
+        font-size: 12px;
+        color:#333;
+    }
+    .reviews_total_l{}
+    .reviews_total_l h4{
+        /*font-size: 14px;*/
+    }
+    .reviews_total_l .ratings_aver{
+        line-height: 32px;
+    }
+    .reviews_total_l .ratings_aver i.icon-xing1{
+        font-size: 24px;
+    }
+    .reviews_total_l .ratings_num{}
+    .reviews_total_l .ratings_num span{
+        padding-right: 5px;
+    }
+    .reviews_total_l .ratings_write{
+        line-height: 30px;
+    }
+    .reviews_total_l .ratings_write a{
+        color:#FF4500;
+        text-decoration: underline;
+    }
+    .reviews_total_r{}
+    .reviews_total_r .review_star_list{}
+    .review_star_list li{
+        height: 20px;
+        line-height: 20px;
+    }
+    .review_star_list li .g_level{
+        margin-right: 10px;
+    }
+    .review_star_list li i{}
+    .review_star_list li .pro_bg{
+        margin-left:4px;
+        position: relative;
+        display:inline-block;
+        width: 135px;
+        height: 10px;
+        background-color: #DCDCDC;
+    }
+    .review_star_list li .pro_inner{
+        position:absolute;
+        top:0;
+        left:0;
+        height: 100%;
+        background-color: #2BBB14;
+        /*width: 45%;*/
+    }
+    .review_star_list li .star_num{
+        margin-left: 8px;
+    }
+/*--*/
+    .g_product_rev .reviews_list{}
+    .reviews_list{}
+    .reviews_list ul{}
+    .reviews_list li{
+        padding: 26px 12px 10px 0;
+        border-bottom:1px dotted #CFCFCF;
+    }
+    .reviews_list li .reviews_item_l{}
+    .reviews_item_l .review_stars{}
+    .reviews_item_l .review_stars i{}
+    .reviews_item_l .review_date{
+        font-size:12px;
+        color:#999999;
+    }
+    .reviews_item_l .review_test{
+        font-size: 12px;
+        font-weight: bold;
+        color:#FF4500;
+    }
+    .reviews_item_l .review_view{}
+    .reviews_item_l .review_view>span{
+        font-size: 12px;
+        color:#999;
+    }
+    .reviews_item_l .review_view>span.view_suppot{
+        margin-right: 10px;
+    }
+    .reviews_item_l .review_view>span>i{
+        color:#FFA3A6;
+        vertical-align: middle;
+        cursor:pointer;
+    }
+    .reviews_item_l .review_view>span>span{}
+    .reviews_list li .reviews_item_r{
+        width: 590px;
+        vertical-align: middle;
+    }
+    .reviews_item_r p{
+        line-height: 20px;
+        font-size: 12px;
+        color:#333333;
+        margin-bottom: 10px;
+        word-break: break-word;
+    }
+    .reviews_item_r img{padding: 1px;border:1px solid #CFCFCF;margin-right: 6px;}
+    .reviews_item_r .g_thanks{
+        margin-top: 10px;
+        height: 30px;
+        line-height: 30px;
+        border:1px dotted #9BDF70;
+        background-color: #F0FBEB;
+    }
+    .reviews_item_r .g_thanks i{
+        margin: 0 10px;
+        color:#F8961D;
+    }
+    .reviews_item_r .g_thanks span{
+        font-size: 12px;
+        color:#228B28;
+    }
+    .reviews_list .reviews_pages{
+        border-bottom: 2px solid #404040;
+        margin-bottom: 2px;
+    }
+    .reviews_list .reviews_pages .pages_inner{
+        height: 36px;
+        line-height: 36px;
+        color:#333333;
+        font-size: 12px;
+    }
+    .reviews_list .reviews_pages span{
+        display:inline-block;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        margin-right: 10px;
+        cursor:pointer;
+    }
+    .reviews_list .reviews_pages span:hover{
+        color:#FF4500;
+    }
+    .reviews_list .reviews_pages span.g_active{
+        color:#fff;
+        cursor:text;
+        background-color: #FF4500;
+        border-radius: 50%;
+    }
+    .reviews_list .reviews_pages strong{
+        /*margin-left: 10px;*/
+        cursor:pointer;
+    }
+    .reviews_list .reviews_pages i{
+        margin-right: 8px;
+        position: relative;
+        top:2px;
+        /*left:-5px;*/
+    }
+/*--*/
+    .g_product_rev .reviews_enter{}
+    .reviews_enter{}
+    .reviews_enter .top_bg{
+        height: 15px;
+        margin-bottom: 6px;
+        background-image: linear-gradient(180deg,#E5E5E5 0%,#fff 100%);
+    }
+    .reviews_enter ul{
+        padding-left: 20px;
+        margin-bottom: 30px;
+    }
+    .reviews_enter li{
+        color:#333333;
+        font-size: 14px;
+    }
+    .reviews_enter li .check_res{
+        padding-left: 12px;
+        color:#e44;
+        font-size: 16px;
+        display:none;
+        letter-spacing: 2px;
+    }
+    .reviews_enter .choose_stars{
+        margin-bottom: 19px;
+        cursor: pointer;
+    }
+    .reviews_enter .choose_stars i{
+        font-size: 24px;
+    }
+    .reviews_enter .g_name{
+        margin-bottom: 15px;
+    }
+    .reviews_enter .g_name input{
+        width: 182px;
+        height: 22px;
+        text-indent: 4px;
+        border:1px solid #CCCCCC;
+        color:#999999;
+    }
+    .reviews_enter .g_content{
+        margin-bottom: 14px;
+    }
+    .reviews_enter .g_content textarea{
+        width: 375px;
+        height: 104px;`
+        border:1px solid #CCCCCC;
+        box-shadow: inset 1px 1px 3px 0 #ccc;
+        /*resize: none;*/
+    }
+    .reviews_enter .g_photo{
+        margin-bottom: 10px;
+    }
+    .reviews_enter .g_code{
+        margin-bottom: 10px;
+    }
+    .reviews_enter .g_code input{
+        width: 52px;
+        height: 22px;
+        border:1px solid #CCCCCC;
+        margin-right: 4px;
+        vertical-align: middle;
+    }
+    .reviews_enter .g_code span{
+        vertical-align: middle;
+        cursor:pointer;
+        display:inline-block;
+        width: 120px;
+        height: 24px;
+        letter-spacing: 4px;
+        font-weight: bold;
+        line-height: 24px;
+        text-align: center;
+        font-size: 16px;
+        color:#fff;
+        border-radius: 4px;
+        background-image: linear-gradient(135deg,#5D5D5D 0%, #bbb 10%,#5D5D5D 20%, #bbb 30%,#5D5D5D 40%, #bbb 50%,#5D5D5D 60%, #bbb 70%,#5D5D5D 80%, #bbb 90%,#5D5D5D 100%);
+    }
+    .reviews_enter .g_submit{
+        /*margin-bottom: -1px;*/
+    }
+    .reviews_enter .g_submit span{
+        display:inline-block;
+        width: 64px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        font-size: 16px;
+        color:#fff;
+        background-color: #F7901B;
+        cursor:pointer;
+    }
+/**/

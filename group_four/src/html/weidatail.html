@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            /**{padding:0;margin:0;}*/
+            #w_datail{width:600px;margin:100px auto;}
+            ul{list-style: none;}
+            .list span{text-decoration: line-through;}
+            .our span{color:red;}
+            .save span{color:green;}
+        </style>
+        <script type="text/javascript">
+        //weidatail.html?name=Decent%20Module%20Case%20Silicone%20Skin%20Cover%20...&list=4998&our=3892&imgurl=../images/0.png&save=1106
+        window.onload=function(){
+            var div=document.createElement("div");
+            var ul =document.createElement("ul");
+            var li =document.createElement("li");
+            //图片
+            var img=document.createElement("img");
+            var a=document.createElement("a");
+            img.src="";
+            li.appendChild(a);
+            a.appendChild(img);
+            ul.appendChild(li);
+
+            //名字
+            var name=document.createElement("h4");
+            // title.innerHTML="";
+            // var txt=document.createTextNode(arr[i].name);
+            // title.appendChild(txt);
+            li.appendChild(name);
+            //列表价格
+            var list=document.createElement("p");
+            list.className="list";//创建一个类，方便写span的样式
+            list.innerHTML="List Price：$<span>"+""+"</span>";
+            li.appendChild(list);
+            //our
+            var our=document.createElement("p");
+            our.className="our";
+            our.innerHTML="Our Price：$<span>"+""+"</span>";
+            li.appendChild(our);
+            //save
+            var save=document.createElement("p");
+            save.className="save";
+            li.appendChild(save);
+             div.appendChild(ul);
+            goodslist.appendChild(div);
+
+
+
+            var jie=location.search.slice(1).split("&");
+            jie.forEach(function(item){
+                var arr=item.split("=");
+                console.log(item);
+                var val=decodeURI(arr[1]);
+                if(arr[0]=="name"){
+                    name.innerHTML=val;
+                }else if(arr[0]=="list"){
+                    list.innerHTML="List Price：<span>$"+val+"</span>";
+                }else if(arr[0]=="our"){
+                    our.innerHTML="Our Price：<span>$"+val+"</span>";
+                }else if(arr[0]=="imgurl"){
+                    val = "../" + val;
+                    img.src=val;
+                }else if(arr[0]=="save"){
+                    save.innerHTML="Save:<span>$"+val+"</span>";
+                }
+            });
+        }
+        </script>
+    </head>
+    <body>
+    <div id="w_datail">
+        <h1>商品详情</h1>
+        <div id="goodslist">
+        
+        </div>
+    </div>
+    </body>
+</html>
